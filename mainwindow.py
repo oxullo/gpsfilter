@@ -12,6 +12,7 @@ class MainWindow(QtGui.QMainWindow):
     def __init__(self, *args, **kargs):
         super(MainWindow, self).__init__(*args, **kargs)
         self.ui = uic.loadUi('mainwindow.ui', self)
+        self.ui.lbWindowSize.setText(str(self.ui.slWindowSize.value()))
         self.__rawValues = None
         self.__resetFileInfo()
 
