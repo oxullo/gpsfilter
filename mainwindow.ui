@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>884</width>
-    <height>297</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="lbFileName">
              <property name="text">
               <string>No file loaded</string>
              </property>
@@ -59,7 +59,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLabel" name="label_4">
+            <widget class="QLabel" name="lbPoints">
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -73,7 +73,7 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLabel" name="label_8">
+            <widget class="QLabel" name="lbFileType">
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -122,7 +122,24 @@
         <property name="title">
          <string>Filter options</string>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QRadioButton" name="rbMedian">
+           <property name="text">
+            <string>Median</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rbGaussian">
+           <property name="text">
+            <string>Gaussian</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
@@ -145,6 +162,12 @@
                <width>150</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>20</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -225,7 +248,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -254,12 +277,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>250</y>
+     <x>176</x>
+     <y>279</y>
     </hint>
     <hint type="destinationlabel">
-     <x>280</x>
-     <y>248</y>
+     <x>278</x>
+     <y>277</y>
     </hint>
    </hints>
   </connection>
@@ -275,7 +298,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>18</x>
-     <y>367</y>
+     <y>339</y>
     </hint>
    </hints>
   </connection>
@@ -291,7 +314,55 @@
     </hint>
     <hint type="destinationlabel">
      <x>36</x>
-     <y>371</y>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slWindowSize</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>doUpdateWindowSize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>147</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbMedian</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>doProcess()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>231</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>443</x>
+     <y>315</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbGaussian</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>doProcess()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>545</x>
+     <y>315</y>
     </hint>
    </hints>
   </connection>
@@ -299,5 +370,7 @@
  <slots>
   <slot>doOpen()</slot>
   <slot>doSave()</slot>
+  <slot>doUpdateWindowSize()</slot>
+  <slot>doProcess()</slot>
  </slots>
 </ui>
