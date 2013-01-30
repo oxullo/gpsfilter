@@ -5,7 +5,7 @@ import os
 from PyQt4 import QtGui
 from PyQt4 import uic
 
-import parser
+import fileio
 import filter
 
 class MainWindow(QtGui.QMainWindow):
@@ -20,7 +20,7 @@ class MainWindow(QtGui.QMainWindow):
         self.__resetFileInfo()
         fileName = unicode(QtGui.QFileDialog.getOpenFileName())
         try:
-            self.__rawValues = parser.load(fileName)
+            self.__rawValues = fileio.load(fileName)
         except Exception, e:
             msg = QtGui.QMessageBox()
             msg.setText('Error while loading file: %s (%s)' % (fileName, str(e)))
