@@ -30,6 +30,5 @@ class Graph(QtGui.QFrame):
         self.__coords = []
         xpos = 0
         for value in self.__values:
-            self.__coords.append(QtCore.QPointF(xpos, value / maxval * height))
+            self.__coords.append(QtCore.QPointF(xpos, (1 - value / maxval) * height))
             xpos += xstep
-        

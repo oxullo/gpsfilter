@@ -27,6 +27,7 @@ class MainWindow(QtGui.QMainWindow):
             msg.exec_()
             
         self.ui.lbFileName.setText(os.path.basename(fileName))
+        self.ui.lbPoints.setText(str(len(self.__rawValues)))
         self.ui.statusBar.showMessage('Opened file %s' % fileName)
         self.ui.graphInput.setValues(self.__rawValues)
         self.doProcess()
@@ -39,6 +40,16 @@ class MainWindow(QtGui.QMainWindow):
 
         processedValues = func(self.__rawValues, self.ui.slWindowSize.value())
         self.ui.graphOutput.setValues(processedValues)
+        
+        diffs = [processedValues[i+1] - processedValues[i]
+                for i in xrange(len(processedValues) - 1)]
+
+        ascensionSegs = [asc for asc in diffs if asc > 0]
+        discensionSegs = [dis for dis in diffs if dis < 0]
+        
+        self.ui.lbAscent.setText('%.2fm' % sum(ascensionSegs))
+        self.ui.lbDescent.setText('%.2fm' % sum(discensionSegs))
+        self.__processedValues = processedValues
 
     def doSave(self):
         print 'Save'
@@ -48,6 +59,7 @@ class MainWindow(QtGui.QMainWindow):
 
     def __resetFileInfo(self):
         self.ui.lbFileName.setText('No file loaded')
-        self.ui.lbFileType.setText('')
         self.ui.lbPoints.setText('')
+        self.ui.lbAscent.setText('')
+        self.ui.lbDescent.setText('')
 

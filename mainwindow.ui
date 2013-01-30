@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>884</width>
-    <height>340</height>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
          </size>
         </property>
         <property name="title">
-         <string>File handling</string>
+         <string>File info</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
@@ -54,12 +54,12 @@
            <item row="2" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Points:</string>
+              <string>Ascent:</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLabel" name="lbPoints">
+            <widget class="QLabel" name="lbAscent">
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -68,12 +68,26 @@
            <item row="1" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>File type:</string>
+              <string>Points:</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLabel" name="lbFileType">
+            <widget class="QLabel" name="lbPoints">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Descent:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="lbDescent">
              <property name="text">
               <string>TextLabel</string>
              </property>
@@ -167,7 +181,7 @@
               <number>1</number>
              </property>
              <property name="maximum">
-              <number>20</number>
+              <number>100</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
