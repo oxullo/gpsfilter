@@ -29,7 +29,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.lbFileName.setText(os.path.basename(fileName))
         self.ui.lbPoints.setText(str(len(self.__rawValues)))
         self.ui.statusBar.showMessage('Opened file %s' % fileName)
-        self.ui.graphInput.setValues(self.__rawValues)
+        self.ui.graph.setInputValues(self.__rawValues)
         self.doProcess()
 
     def doProcess(self):
@@ -39,7 +39,6 @@ class MainWindow(QtGui.QMainWindow):
             func = filter.applyGaussian
 
         processedValues = func(self.__rawValues, self.ui.slWindowSize.value())
-        self.ui.graphOutput.setValues(processedValues)
         
         diffs = [processedValues[i+1] - processedValues[i]
                 for i in xrange(len(processedValues) - 1)]
@@ -50,6 +49,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.lbAscent.setText('%.2fm' % sum(ascensionSegs))
         self.ui.lbDescent.setText('%.2fm' % sum(discensionSegs))
         self.__processedValues = processedValues
+        self.ui.graph.setOutputValues(processedValues)
 
     def doSave(self):
         print 'Save'
