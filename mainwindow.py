@@ -3,15 +3,16 @@
 
 import os
 from PyQt4 import QtGui
-from PyQt4 import uic
 
+import mainwindow_ui
 import fileio
 import filter
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, *args, **kargs):
         super(MainWindow, self).__init__(*args, **kargs)
-        self.ui = uic.loadUi('mainwindow.ui', self)
+        self.ui = mainwindow_ui.Ui_MainWindow()
+        self.ui.setupUi(self)
         self.ui.lbWindowSize.setText(str(self.ui.slWindowSize.value()))
         self.__rawValues = None
         self.__resetFileInfo()

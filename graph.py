@@ -14,9 +14,7 @@ class MplCanvas(FigureCanvas):
     def __init__(self):
         self.fig = Figure()
         self.input = self.fig.add_subplot(211)
-        self.input.grid()
         self.output = self.fig.add_subplot(212)
-        self.output.grid()
         
         FigureCanvas.__init__(self, self.fig)
         self.setSizePolicy(QtGui.QSizePolicy.Expanding,
@@ -38,10 +36,12 @@ class Graph(QtGui.QWidget):
         self.canvas.input.clear()
         self.canvas.output.clear()
         self.canvas.input.plot(range(0, len(values)), values)
+        self.canvas.input.grid()
         self.canvas.draw()
 
     def setOutputValues(self, values):
         self.canvas.output.clear()
         self.canvas.output.plot(range(0, len(values)), values)
+        self.canvas.output.grid()
         self.canvas.draw()
     
