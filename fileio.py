@@ -8,7 +8,6 @@ def load(file):
     
     data = []
     for row in reader:
-        print row
         try:
             lev = float(row[0].replace(',', '.'))
         except ValueError:
@@ -17,3 +16,10 @@ def load(file):
             data.append(lev)
     
     return data
+
+def save(data, fileName):
+    f = open(fileName, 'w')
+    for entry in data:
+        f.write('%s\n' % entry)
+    
+    f.close()
