@@ -31,6 +31,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.lbPoints.setText(str(len(self.__rawValues)))
         self.ui.statusBar.showMessage('Opened file %s' % fileName)
         self.ui.graph.setInputValues(self.__rawValues)
+        self.ui.pushButton_2.setEnabled(True)
         self.doProcess()
 
     def doProcess(self):
@@ -53,7 +54,7 @@ class MainWindow(QtGui.QMainWindow):
         self.ui.graph.setOutputValues(processedValues)
 
     def doSave(self):
-        print 'Save'
+        fileio.save(self.__processedValues, unicode(QtGui.QFileDialog.getSaveFileName()))
 
     def doUpdateWindowSize(self, value):
         self.doProcess()

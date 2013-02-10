@@ -20,6 +20,6 @@ def load(file):
 def save(data, fileName):
     f = open(fileName, 'w')
     for entry in data:
-        f.write('%s\n' % entry)
+        f.write('%.2f\n' % entry)
     
     f.close()
